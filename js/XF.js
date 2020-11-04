@@ -24,8 +24,11 @@ function getAbsLfet(obj) {
 		var parents = getAllparents(obj);
 		if(parents.length>3){
 			for (var i = 3; i < parents.length; i++) {
-				absLeft += parents[i].offsetLeft;
+				if(parents[i].position&&parents[i].position != "static" || getStyle(parents[i]).position&&getStyle(parents[i]).position != "static"){
+					absLeft += parents[i].offsetLeft;
+				}
 			}
+				
 		}
 		return absLeft + obj.offsetLeft;
 	}
@@ -37,7 +40,9 @@ function getAbsTop(obj) {
 		var parents = getAllparents(obj);
 		if(parents.length>3){
 			for (var i = 3; i < parents.length; i++) {
-				absTop += parents[i].offsetTop;
+				if(parents[i].position&&parents[i].position != "static" || getStyle(parents[i]).position&&getStyle(parents[i]).position != "static"){
+					absTop += parents[i].offsetTop;
+			}
 			}
 		}
 		return absTop + obj.offsetTop;
@@ -62,7 +67,6 @@ function enlarged(smallImg, selectArea, bigImg, scale) {
 		selectArea.style.top = event.clientY - absTop - parseInt(getStyle(inner).height) / 2 + "px";
 		//当内部选择区域元素右下距离（相对于父元素(小图div)）超过父元素右下边框时将其最大移动距离设置为父元素的宽高减去子元素的宽高
 		if (parseInt(selectArea.style.left) > (parseInt(getStyle(this).width) - parseInt(getStyle(selectArea).width))) {
-
 			selectArea.style.left = parseInt(getStyle(this).width) - parseInt(getStyle(selectArea).width) + "px";
 		}
 		if (parseInt(selectArea.style.top) > (parseInt(getStyle(this).height) - parseInt(getStyle(selectArea).height))) {
