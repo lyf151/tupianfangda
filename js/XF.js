@@ -16,14 +16,14 @@ function getAllparents(obj) {
 	}
 	return parents;
 }
-//获取元素相对body的绝对left的值
+//获取元素相对原点的left值
 function getAbsLfet(obj) {
 	if (obj) {
 		var absLeft = 0;
 		var parents = getAllparents(obj);
 		if (parents.length > 3) {
 			for (var i = 3; i < parents.length; i++) {
-				if (parents[i].style.position && parents[i].position !== "static" || getStyle(parents[i]).position && getStyle(parents[i])
+				if (parents[i].style.position && parents[i].style.position !== "static" || getStyle(parents[i]).position && getStyle(parents[i])
 					.position !== "static") {
 					absLeft += parents[i].offsetLeft;
 				}
@@ -33,14 +33,14 @@ function getAbsLfet(obj) {
 		return absLeft + obj.offsetLeft;
 	}
 }
-//获取元素相对body的绝对top的值
+//获取元素相对原点的top值
 function getAbsTop(obj) {
 	if (obj) {
 		var absTop = 0;
 		var parents = getAllparents(obj);
 		if (parents.length > 3) {
 			for (var i = 3; i < parents.length; i++) {
-				if (parents[i].style.position && parents[i].position !== "static" || getStyle(parents[i]).position && getStyle(parents[i])
+				if (parents[i].style.position && parents[i].styles.position !== "static" || getStyle(parents[i]).position && getStyle(parents[i])
 					.position !== "static") {
 					absTop += parents[i].offsetTop;
 				}
