@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="js/XF.js">
+			
+		</script>
+		<link rel="stylesheet" type="text/css" href="css/XF.css"/>
+	</head>
+	<body>
+		<div id="box">
+			<div id="inner">
+			
+			</div>
+			<div id="box2"></div>
+		</div>
+		
+		<script>
+			//大图和小图的比要等于放大框和区域选择框的比
+			var box = document.getElementById("box");
+			var inner = document.getElementById("inner");
+			var box2 = document.getElementById("box2");
+			enlarged(box,inner,box2,5);
+		</script>
+	</body>
+</html>
