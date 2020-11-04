@@ -1,4 +1,3 @@
-
 function getStyle(obj) {
 	return window.getComputedStyle ? window.getComputedStyle(obj, false) : obj.currentStyle;
 }
@@ -22,13 +21,14 @@ function getAbsLfet(obj) {
 	if (obj) {
 		var absLeft = 0;
 		var parents = getAllparents(obj);
-		if(parents.length>3){
+		if (parents.length > 3) {
 			for (var i = 3; i < parents.length; i++) {
-				if(parents[i].position&&parents[i].position != "static" || getStyle(parents[i]).position&&getStyle(parents[i]).position != "static"){
+				if (parents[i].position && parents[i].position !== "static" || getStyle(parents[i]).position && getStyle(parents[i])
+					.position !== "static") {
 					absLeft += parents[i].offsetLeft;
 				}
 			}
-				
+
 		}
 		return absLeft + obj.offsetLeft;
 	}
@@ -38,11 +38,12 @@ function getAbsTop(obj) {
 	if (obj) {
 		var absTop = 0;
 		var parents = getAllparents(obj);
-		if(parents.length>3){
+		if (parents.length > 3) {
 			for (var i = 3; i < parents.length; i++) {
-				if(parents[i].position&&parents[i].position != "static" || getStyle(parents[i]).position&&getStyle(parents[i]).position != "static"){
+				if (parents[i].position && parents[i].position !== "static" || getStyle(parents[i]).position && getStyle(parents[i])
+					.position !== "static") {
 					absTop += parents[i].offsetTop;
-			}
+				}
 			}
 		}
 		return absTop + obj.offsetTop;
@@ -56,7 +57,7 @@ scale 比例
 */
 
 function enlarged(smallImg, selectArea, bigImg, scale) {
-	
+
 	//获取smallImg相对于body的绝对left,top的值
 	var absLeft = getAbsLfet(smallImg);
 	var absTop = getAbsTop(smallImg);
