@@ -64,25 +64,24 @@ function enlarged(smallImg, selectArea, bigImg, scale) {
 	smallImg.onmousemove = function(event) {
 		event = event || window.event;
 		//设置区域选择子元素位置（需要event.clientX，event.clientY（此为鼠标相对于浏览器的位置）减去父元素(小图div)位置相对于原点的距离，保证其位置相对于父元素计算），再减去子元素长宽的各一半，以让鼠标处于子元素的中心点
-		selectArea.style.left = event.clientX - absLeft - parseInt(getStyle(inner).width) / 2 + "px";
-		selectArea.style.top = event.clientY - absTop - parseInt(getStyle(inner).height) / 2 + "px";
+		selectArea.style.left = event.clientX - absLeft - selectArea.offsetWidth / 2 + "px";
+		selectArea.style.top = event.clientY - absTop - selectArea.offsetHeight / 2 + "px";
 		//当内部选择区域元素右下距离（相对于父元素(小图div)）超过父元素右下边框时将其最大移动距离设置为父元素的宽高减去子元素的宽高
-		if (parseInt(selectArea.style.left) > (parseInt(getStyle(this).width) - parseInt(getStyle(selectArea).width))) {
-			selectArea.style.left = parseInt(getStyle(this).width) - parseInt(getStyle(selectArea).width) + "px";
+		if (selectArea.offsetLeft > this.offsetWidth - selectArea.offsetWidth) {
+			selectArea.style.left = this.offsetWidth - selectArea.offsetWidth + "px";
 		}
-		if (parseInt(selectArea.style.top) > (parseInt(getStyle(this).height) - parseInt(getStyle(selectArea).height))) {
+		if (selectArea.offsetTop > this.offsetHeight - selectArea.offsetHeight) {
 
-			selectArea.style.top = parseInt(getStyle(this).height) - parseInt(getStyle(selectArea).height) + "px";
+			selectArea.style.top = this.offsetHeight - selectArea.offsetHeight + "px";
 		}
 		//当内部选择区域元素父元素左上距离为0时（相对父元素）将其设置为0
-		if (parseInt(selectArea.style.left) < 0) {
+		if (selectArea.offsetLeft < 0) {
 			selectArea.style.left = 0 + "px";
 		}
-		if (parseInt(selectArea.style.top) < 0) {
+		if (selectArea.offsetTop < 0) {
 			selectArea.style.top = 0 + "px";
 		}
 		//根据子元素（区域选择div）在父元素(小图div)中移动的位置显示大图片要显示的区域，移动距离要乘比值
-		bigImg.style.backgroundPosition = -(parseInt(selectArea.style.left) * scale) + "px" + " " + (-parseInt(selectArea.style
-			.top) * scale) + "px";
+		bigImg.style.backgroundPosition = -(selectArea.offsetLeft * scale) + "px" + " " + (-(selectArea.offsetTop) * scale) + "px";
 	}
 }
