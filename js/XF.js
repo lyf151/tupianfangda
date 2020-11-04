@@ -23,7 +23,7 @@ function getAbsLfet(obj) {
 		var parents = getAllparents(obj);
 		if (parents.length > 3) {
 			for (var i = 3; i < parents.length; i++) {
-				if (parents[i].position && parents[i].position !== "static" || getStyle(parents[i]).position && getStyle(parents[i])
+				if (parents[i].style.position && parents[i].position !== "static" || getStyle(parents[i]).position && getStyle(parents[i])
 					.position !== "static") {
 					absLeft += parents[i].offsetLeft;
 				}
@@ -40,7 +40,7 @@ function getAbsTop(obj) {
 		var parents = getAllparents(obj);
 		if (parents.length > 3) {
 			for (var i = 3; i < parents.length; i++) {
-				if (parents[i].position && parents[i].position !== "static" || getStyle(parents[i]).position && getStyle(parents[i])
+				if (parents[i].style.position && parents[i].position !== "static" || getStyle(parents[i]).position && getStyle(parents[i])
 					.position !== "static") {
 					absTop += parents[i].offsetTop;
 				}
