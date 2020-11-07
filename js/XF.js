@@ -63,9 +63,8 @@ function enlarged(smallImg, selectArea, bigImg, scale) {
 	var absTop = getAbsTop(smallImg);
 	var siw = smallImg.offsetWidth;
 	var sih = smallImg.offsetHeight;
-	var saw = parseInt(getStyle(selectArea).width) //selectArea.offsetWidth;
-	var sah = parseInt(getStyle(selectArea).height) //selectArea.offsetHeight;
-	//console.log(siw,sih,saw,sah,selectArea.offsetWidth,getStyle(selectArea).width,selectArea,smallImg.offsetWidth);
+	var saw = parseInt(getStyle(selectArea).width);
+	var sah = parseInt(getStyle(selectArea).height); 
 	smallImg.onmousemove = function(event) {
 		event = event || window.event;
 		//设置区域选择子元素位置（需要event.clientX，event.clientY（此为鼠标相对于浏览器的位置）减去父元素(小图div)位置相对于原点的距离，保证其位置相对于父元素计算），再减去子元素长宽的各一半，以让鼠标处于子元素的中心点
