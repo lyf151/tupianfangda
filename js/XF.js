@@ -40,7 +40,7 @@ function getAbsTop(obj) {
 		var parents = getAllparents(obj);
 		if (parents.length > 3) {
 			for (var i = 3; i < parents.length; i++) {
-				if (parents[i].style.position && parents[i].styles.position !== "static" || getStyle(parents[i]).position && getStyle(parents[i])
+				if (parents[i].style.position && parents[i].style.position !== "static" || getStyle(parents[i]).position && getStyle(parents[i])
 					.position !== "static") {
 					absTop += parents[i].offsetTop;
 				}
@@ -61,18 +61,23 @@ function enlarged(smallImg, selectArea, bigImg, scale) {
 	//获取smallImg相对于body的绝对left,top的值
 	var absLeft = getAbsLfet(smallImg);
 	var absTop = getAbsTop(smallImg);
+	var siw = smallImg.offsetWidth;
+	var sih = smallImg.offsetHeight;
+	var saw = parseInt(getStyle(selectArea).width) //selectArea.offsetWidth;
+	var sah = parseInt(getStyle(selectArea).height) //selectArea.offsetHeight;
+	//console.log(siw,sih,saw,sah,selectArea.offsetWidth,getStyle(selectArea).width,selectArea,smallImg.offsetWidth);
 	smallImg.onmousemove = function(event) {
 		event = event || window.event;
 		//设置区域选择子元素位置（需要event.clientX，event.clientY（此为鼠标相对于浏览器的位置）减去父元素(小图div)位置相对于原点的距离，保证其位置相对于父元素计算），再减去子元素长宽的各一半，以让鼠标处于子元素的中心点
-		selectArea.style.left = event.clientX - absLeft - selectArea.offsetWidth / 2 + "px";
-		selectArea.style.top = event.clientY - absTop - selectArea.offsetHeight / 2 + "px";
+		selectArea.style.left = (event.clientX - absLeft - saw / 2) + "px";
+		selectArea.style.top = (event.clientY - absTop - sah / 2) + "px";
 		//当内部选择区域元素右下距离（相对于父元素(小图div)）超过父元素右下边框时将其最大移动距离设置为父元素的宽高减去子元素的宽高
-		if (selectArea.offsetLeft > this.offsetWidth - selectArea.offsetWidth) {
-			selectArea.style.left = this.offsetWidth - selectArea.offsetWidth + "px";
+		if (selectArea.offsetLeft > siw - saw) {
+			selectArea.style.left = siw - saw + "px";
 		}
-		if (selectArea.offsetTop > this.offsetHeight - selectArea.offsetHeight) {
+		if (selectArea.offsetTop > sih - sah) {
 
-			selectArea.style.top = this.offsetHeight - selectArea.offsetHeight + "px";
+			selectArea.style.top = sih - sah + "px";
 		}
 		//当内部选择区域元素父元素左上距离为0时（相对父元素）将其设置为0
 		if (selectArea.offsetLeft < 0) {
