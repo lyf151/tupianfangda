@@ -5,25 +5,51 @@
 		<title></title>
 		<script type="text/javascript" src="js/XF.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/XF.css" />
+		<style type="text/css">
+/* 			#xxx{
+				position: fixed;
+				width: 100px;
+				height: 100px;
+				background-color: aqua;
+			}
+			#zzz{
+				/* position: fixed; */
+				width: 50px;
+				height: 50px;
+				background-color: aquamarine;
+				top: 20px;
+			} */
+		</style>
 	</head>
 	<body>
+
 		<div id="box">
 			<div id="inner">
 
 			</div>
 			<div id="box2"></div>
 		</div>
-
+		
+		<div id="xxx">
+			<div id="zzz">
+				
+			</div>
+			
+		</div>
 
 		<script>
 			//大图和小图的比要等于放大框和区域选择框的比
 			var box = document.getElementById("box");
 			var inner = document.getElementById("inner");
 			var box2 = document.getElementById("box2");
+			// var xxx = document.getElementById("xxx");
+			// var zzz = document.getElementById("zzz");
+			// console.log(xxx.offsetTop);
+			// console.log(zzz.offsetTop);
 			enlarged(box, inner, box2, 5);
 			// if(box.style.position){
 			// 	console.log("1235465454635435453");
-				
+
 			// }
 			// console.log(box.style.position,"//////");
 			// if(getStyle(box).position){
